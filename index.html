@@ -1,4 +1,25 @@
-<form action="scrape" method="GET">
-  <input type="url" name="url" placeholder="Enter URL">
-  <button type="submit">Scrape</button>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Web Scraping Lab</title>
+</head>
+<body>
+<h1>Web Scraping Lab</h1>
+<form action="ScraperServlet" method="post">
+  <label for="url">URL:</label>
+  <input type="text" id="url" name="url" required><br><br>
+
+  <input type="radio" id="title" name="options" value="title">
+  <label for="title">Title</label><br>
+
+  <input type="radio" id="links" name="options" value="links">
+  <label for="links">Links</label><br>
+
+  <input type="radio" id="news" name="options" value="news">
+  <label for="news">News</label><br><br>
+
+
+  <input type="submit" value="Scrape">
 </form>
+</body>
+</html>
