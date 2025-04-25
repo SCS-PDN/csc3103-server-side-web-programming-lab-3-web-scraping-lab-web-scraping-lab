@@ -1,0 +1,19 @@
+<web-app>
+    <servlet>
+        <servlet-name>ScrapeServlet</servlet-name>
+        <servlet-class>ScrapeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ScrapeServlet</servlet-name>
+        <url-pattern>/scrape</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DownloadServlet</servlet-name>
+        <servlet-class>DownloadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DownloadServlet</servlet-name>
+        <url-pattern>/download</url-pattern>
+    </servlet-mapping>
+</web-app>
