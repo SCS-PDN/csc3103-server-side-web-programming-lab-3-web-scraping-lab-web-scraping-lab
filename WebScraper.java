@@ -24,10 +24,8 @@ public class WebScraper {
         public void scrape(String url) throws IOException {
             Document doc = Jsoup.connect(url).get();
 
-            // Extract document title
             this.title = doc.title();
 
-            // Extract headings (h1-h6)
             StringBuilder headingBuilder = new StringBuilder();
             for (int i = 1; i <= 6; i++) {
                 Elements headingElements = doc.select("h" + i);

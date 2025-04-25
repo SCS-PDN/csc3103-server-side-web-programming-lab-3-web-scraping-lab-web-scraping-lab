@@ -17,7 +17,6 @@ public class ScraperServlet extends HttpServlet {
         String url = request.getParameter("url");
         String action = request.getParameter("action");
 
-        // Session Tracking
         HttpSession session = request.getSession();
         Integer visitCount = (Integer) session.getAttribute("visitCount");
         if (visitCount == null) {
@@ -40,11 +39,10 @@ public class ScraperServlet extends HttpServlet {
                 List<WebScraper.Article> articles = scraper.scrape(url);
 
                 if ("downloadCSV".equals(action)) {
-                    // CSV Download Logic
                     response.setContentType("text/csv");
                     response.setHeader("Content-Disposition", "attachment; filename=\"articles.csv\"");
                     try (PrintWriter csvWriter = response.getWriter()) {
-                        csvWriter.println("Headline,Publication Date,Author"); // CSV Header
+                        csvWriter.println("Headline,Publication Date,Author");
                         for (WebScraper.Article article : articles) {
                             csvWriter.println(String.format("%s,%s,%s",
                                     article.headline,
@@ -53,13 +51,11 @@ public class ScraperServlet extends HttpServlet {
                         }
                     }
                 } else {
-                    // Display Results in HTML
                     Gson gson = new Gson();
                     String json = gson.toJson(articles);
                     out.println("<h2>Scraped Data:</h2>");
                     out.println("<pre>" + json + "</pre>");
 
-                    // Add Download CSV Button
                     out.println("<form method='post'>");
                     out.println("<input type='hidden' name='url' value='" + url + "'>");
                     out.println("<input type='hidden' name='action' value='downloadCSV'>");
